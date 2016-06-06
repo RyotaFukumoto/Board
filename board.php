@@ -69,13 +69,13 @@
     <a href="http://localhost/Board/index.php" >ログアウト</a>
   </div>
   <?php
-  echo $name."さん。";
+  echo $name."さん";
   ?>
   <?php
   echo '<form action="" method="GET" onsubmit="return check(this)">';
   echo  '<input type="text" name="text">';
   echo  '<input type="hidden" name="name" value='.$name.' >';
-  echo  '<input type="submit" name="add" value="add">';
+  echo  '　<input type="submit" name="add" value="add">';
   echo '</form>';
   ?>
   <hr>
