@@ -42,7 +42,8 @@
       echo "</script>";
     }else{
       $name = $task['name'];
-      header("Location: http://localhost/Board/board.php?name=".$name."&login='LOGIN'");
+      // header("Location: http://localhost/Board/board.php?name=".$name."&login='LOGIN'");
+      header("Location: ../Board/board.php?name=".$name."&login='LOGIN'");
     }
   }
  ?>
@@ -94,7 +95,8 @@
 </head>
 <body>
   <div class ="main">
-    <form action="http://localhost/Board/index.php" method="get" onsubmit="return check(this)">
+    <!-- <form action="http://localhost/Board/index.php" method="get" onsubmit="return check(this)"> -->
+    <form action="../Board/index.php" method="get" onsubmit="return check(this)">
       <div class="right" Align="center">
         <input type="text" size="21" name="name" value="" placeholder="ユーザー名"><br>
         <input type="text" size="21" name="passwd" value="" placeholder="パスワード">
