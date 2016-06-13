@@ -17,8 +17,16 @@
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':name', $name);
     $stmt->bindValue(':password',$password);
-    $stmt->execute();
-    header("Location: http://localhost/Board/index.php");
+    $result = $stmt->execute();
+    if($result){
+      echo "<script type='text/javascript'>";
+      echo "alert('ユーザーの追加に成功しました。');";
+      echo "</script>";
+    }else{
+      echo "<script type='text/javascript'>";
+      echo "alert('ユーザーIDが使用中です。');";
+      echo "</script>";
+    }
   }else if(isset($_GET['login'])){
     $name = $_GET['name'];
     $password = $_GET['passwd'];
