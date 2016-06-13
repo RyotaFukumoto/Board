@@ -22,8 +22,11 @@ if(isset($_COOKIE['name'])){
     die('エラー');
   }
 
-
-  if(isset($_GET['add'])){
+  if(isset($_GET['login'])){
+    $cName = $_GET['name'];
+    setcookie('name',$cName);
+    header("Location: http://localhost/Board/board.php");
+  }else if(isset($_GET['add'])){
     $text = $_GET['text'];
     $time = date("Y-m-d H:i:s");
     $text = htmlspecialchars($text, ENT_QUOTES);
@@ -108,7 +111,7 @@ if(isset($_COOKIE['name'])){
         }catch(PDOException $e){
           die('エラー');
         }
-        $sql = 'select * from Board;';
+        $sql = 'SELECT * FROM Board;';
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         while($task = $stmt->fetch(PDO::FETCH_ASSOC)){
