@@ -12,14 +12,16 @@
   }
   if(isset($_GET['login'])){
     $name = $_GET['name'];
-    $sql = 'SELECT name FROM User WHERE name = :name;';
+    $password = $_GET['passwd'];
+    $sql = 'SELECT name FROM User WHERE name = :name AND password = :password;';
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':password',$password);
     $stmt->execute();
     $task = $stmt->fetch(PDO::FETCH_ASSOC);
     if($task['name'] == ""){
       echo "<script type='text/javascript'>";
-      echo "alert('ユーザーIDが存在しません。');";
+      echo "alert('ユーザーIDが存在しないか、パスワードが違います。');";
       echo "</script>";
     }else{
       $name = $task['name'];
@@ -62,7 +64,7 @@
 </head>
 <body>
   <div class ="main">
-    <form action="http://localhost/Board/board.php" method="get" onsubmit="return check(this)">
+    <form action="http://localhost/Board/index.php" method="get" onsubmit="return check(this)">
       <input type="text" size="21" name="name" value="" placeholder="ユーザー名">
       <input type="submit"style="width:10%;" name="login" value="Login"><br  />
       <input type="text" size="21" name="passwd" value="" placeholder="パスワード">
