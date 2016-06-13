@@ -62,17 +62,11 @@
 </head>
 <body>
   <div class ="main">
-<<<<<<< HEAD
     <form action="http://localhost/Board/board.php" method="get" onsubmit="return check(this)">
       <input type="text" size="21" name="name" value="" placeholder="ユーザー名">
       <input type="submit"style="width:10%;" name="login" value="Login"><br  />
       <input type="text" size="21" name="passwd" value="" placeholder="パスワード">
       <input type="submit" style="width:10%;" name="new" value="新規作成">
-=======
-    <form action="http://localhost/Board/index.php" method="get" onsubmit="return check(this)">
-      <input type="text" name="name" value="" placeholder="ユーザー名">
-      <input type="submit" name="login" value="Login">
->>>>>>> 28adfd29bf62ede99ad0c0ae8339dbdf346d7077
     </form>
   </div>
 </body>
