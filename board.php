@@ -40,9 +40,11 @@ if(isset($_COOKIE['name'])){
     header("Location: ../Board/board.php");
   }else if(isset($_GET['delete'])){
     $num =$_GET['delete'];
-    $sql = 'DELETE FROM Board WHERE id = :num';
+    $cName = $_GET['name'];
+    $sql = 'DELETE FROM Board WHERE id = :num AND name = :name';
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':num',$num,PDO::PARAM_INT);
+    $stmt->bindValue(':name',$cName);
     $stmt->execute();
     header( "Location: ../Board/board.php?");
   }
