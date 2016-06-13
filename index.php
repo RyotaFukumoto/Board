@@ -10,7 +10,16 @@
   }catch(PDOException $e){
     die('エラー');
   }
-  if(isset($_GET['login'])){
+  if(isset($_GET['new'])){
+    $name = $_GET['name'];
+    $password = $_GET['passwd'];
+    $sql = 'INSERT INTO User (name , password) VALUES(:name, :password);';
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':password',$password);
+    $stmt->execute();
+    header("Location: http://localhost/Board/index.php");
+  }else if(isset($_GET['login'])){
     $name = $_GET['name'];
     $password = $_GET['passwd'];
     $sql = 'SELECT name FROM User WHERE name = :name AND password = :password;';
@@ -39,8 +48,8 @@
         text-align: center;
       }
       body {
-    background-color: #90EE90;
-    color: #7CFC00;
+        background-color: #90EE90;
+        color: #7CFC00;
       }
     </style>
     <script type="text/javascript">
