@@ -67,13 +67,18 @@ if(isset($_COOKIE['name'])){
         return true;
       }
     }
+    function delCookie(){
+       var date = new Date();
+       date.setTime(0);
+       document.cookie = "name=;expires="+date.toGMTString();
+    }
   </script>
   <title>簡易掲示板</title>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
   <div class="right">
-    <a href="http://localhost/Board/index.php" >ログアウト</a>
+    <a href="http://localhost/Board/index.php" onclick="delCookie()">ログアウト</a>
   </div>
   <?php
   echo $name."さん";
