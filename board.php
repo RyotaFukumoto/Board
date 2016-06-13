@@ -5,9 +5,9 @@ if(isset($_COOKIE['name'])){
   if(isset($_GET['login'])){
     $cName = $_GET['name'];
     setcookie('name',$cName);
-    header("Location: http://localhost/Board/board.php");
+    header("Location: ../Board/board.php");
   }else{
-    header("Location: http://localhost/Board/index.php");
+    header("Location: ../Board/index.php");
   }
 }
  try{
@@ -25,7 +25,7 @@ if(isset($_COOKIE['name'])){
   if(isset($_GET['login'])){
     $cName = $_GET['name'];
     setcookie('name',$cName);
-    header("Location: http://localhost/Board/board.php");
+    header("Location: ../Board/board.php");
   }else if(isset($_GET['add'])){
     $text = $_GET['text'];
     $time = date("Y-m-d H:i:s");
@@ -37,14 +37,14 @@ if(isset($_COOKIE['name'])){
     $stmt->bindValue(':time', $time);
     $stmt->execute();
     $dbh = null;
-    header("Location: http://localhost/Board/board.php");
+    header("Location: ../Board/board.php");
   }else if(isset($_GET['delete'])){
     $num =$_GET['delete'];
     $sql = 'DELETE FROM Board WHERE id = :num';
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':num',$num,PDO::PARAM_INT);
     $stmt->execute();
-    header( "Location: http://localhost/Board/board.php?");
+    header( "Location: ../Board/board.php?");
   }
 ?>
 <!DOCTYPE HTML>
@@ -87,7 +87,7 @@ if(isset($_COOKIE['name'])){
 </head>
 <body>
   <div class="right">
-    <a href="http://localhost/Board/index.php" onclick="delCookie()">ログアウト</a>
+    <a href="../Board/index.php" onclick="delCookie()">ログアウト</a>
   </div>
   <?php
   echo $name."さん";
