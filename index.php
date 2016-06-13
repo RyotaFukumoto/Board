@@ -23,7 +23,7 @@
       echo "</script>";
     }else{
       $name = $task['name'];
-      header("Location: http://localhost/Board/board.php?name=".$name);
+      header("Location: http://localhost/Board/board.php?name=".$name."&login='LOGIN'");
     }
   }
  ?>
