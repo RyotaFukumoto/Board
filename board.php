@@ -50,7 +50,7 @@ if(isset($_COOKIE['name'])){
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta http-equiv="Refresh" content="5">
+  <meta http-equiv="Refresh" content="30">
   <style type="text/css">
   .right{text-align: right;}
   .message{
