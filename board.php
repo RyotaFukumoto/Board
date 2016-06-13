@@ -1,6 +1,8 @@
 <?php
-  $name  = $_GET['name'];
-  try{
+if(isset($_COOKIE['name'])){
+  $name  = $_COOKIE['name'];
+} 
+ try{
     $dsn = 'mysql:dbname=BoardDB;host=localhost;charset=utf8';
     $user = 'root';
     $password = '';
@@ -11,7 +13,13 @@
   }catch(PDOException $e){
     die('エラー');
   }
-  if(isset($_GET['add'])){
+
+  if(isset($_GET['login'])){
+    $cName = $_GET['name'];
+    setcookie('name',$cName);
+    header("Location: http://localhost/Board/board.php");
+  }
+  else if(isset($_GET['add'])){
     $text = $_GET['text'];
     $time = date("Y-m-d H:i:s");
     $text = htmlspecialchars($text, ENT_QUOTES);
@@ -22,14 +30,14 @@
     $stmt->bindValue(':time', $time);
     $stmt->execute();
     $dbh = null;
-    header("Location: http://localhost/Board/board.php?name=".$name);
+    header("Location: http://localhost/Board/board.php");
   }else if(isset($_GET['delete'])){
     $num =$_GET['delete'];
     $sql = 'DELETE FROM Board WHERE id = :num';
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':num',$num,PDO::PARAM_INT);
     $stmt->execute();
-    header( "Location: http://localhost/Board/board.php?name=".$name );
+    header( "Location: http://localhost/Board/board.php?");
   }
 ?>
 <!DOCTYPE HTML>
@@ -60,13 +68,19 @@
         return true;
       }
     }
+
+    function delCookie(){
+       var date = new Date();
+       date.setTime(0);
+       document.cookie = "name=;expires="+date.toGMTString();
+    }
   </script>
   <title>簡易掲示板</title>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
   <div class="right">
-    <a href="http://localhost/Board/index.php" >ログアウト</a>
+    <a href="http://localhost/Board/index.php" onclick="delCookie()">ログアウト</a>
   </div>
   <?php
   echo $name."さん";
