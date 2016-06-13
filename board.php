@@ -1,8 +1,8 @@
 <?php
 if(isset($_COOKIE['name'])){
   $name  = $_COOKIE['name'];
-}
-  try{
+} 
+ try{
     $dsn = 'mysql:dbname=BoardDB;host=localhost;charset=utf8';
     $user = 'root';
     $password = '';
@@ -13,6 +13,7 @@ if(isset($_COOKIE['name'])){
   }catch(PDOException $e){
     die('エラー');
   }
+
   if(isset($_GET['login'])){
     $cName = $_GET['name'];
     setcookie('name',$cName);
@@ -67,6 +68,7 @@ if(isset($_COOKIE['name'])){
         return true;
       }
     }
+
     function delCookie(){
        var date = new Date();
        date.setTime(0);
