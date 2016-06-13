@@ -118,11 +118,11 @@ if(isset($_COOKIE['name'])){
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         while($task = $stmt->fetch(PDO::FETCH_ASSOC)){
-          echo "<div class='container message'>";
+          echo "<div class='container message' style='word-wrap: break-word;'>";
           echo "<form method='get' action=''>".$task['name']."  ";
           echo $task['time'];
           echo '<input type="hidden" name="name" value='.$name.' >';
-          echo "　<button type='submit' name='delete' value='".$task['id']."'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+          echo "　<button type='submit' name='delete' style='float: right;' value='".$task['id']."'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
           echo "<br>".$task['text'];
           echo "</form></div>";
         }
