@@ -50,6 +50,7 @@ if(isset($_COOKIE['name'])){
 <!DOCTYPE HTML>
 <html>
 <head>
+  <meta http-equiv="Refresh" content="5">
   <style type="text/css">
   .right{text-align: right;}
   .message{
@@ -111,7 +112,7 @@ if(isset($_COOKIE['name'])){
         }catch(PDOException $e){
           die('エラー');
         }
-        $sql = 'SELECT * FROM Board;';
+        $sql = 'SELECT * FROM Board ORDER BY id DESC;';
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         while($task = $stmt->fetch(PDO::FETCH_ASSOC)){
