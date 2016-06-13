@@ -1,7 +1,15 @@
 <?php
 if(isset($_COOKIE['name'])){
   $name  = $_COOKIE['name'];
-} 
+}else{
+  if(isset($_GET['login'])){
+    $cName = $_GET['name'];
+    setcookie('name',$cName);
+    header("Location: http://localhost/Board/board.php");
+  }else{
+    header("Location: http://localhost/Board/index.php");
+  }
+}
  try{
     $dsn = 'mysql:dbname=BoardDB;host=localhost;charset=utf8';
     $user = 'root';
@@ -14,12 +22,8 @@ if(isset($_COOKIE['name'])){
     die('エラー');
   }
 
-  if(isset($_GET['login'])){
-    $cName = $_GET['name'];
-    setcookie('name',$cName);
-    header("Location: http://localhost/Board/board.php");
-  }
-  else if(isset($_GET['add'])){
+
+  if(isset($_GET['add'])){
     $text = $_GET['text'];
     $time = date("Y-m-d H:i:s");
     $text = htmlspecialchars($text, ENT_QUOTES);
