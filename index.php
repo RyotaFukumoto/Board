@@ -21,11 +21,14 @@
     if($result){
       echo "<script type='text/javascript'>";
       echo "alert('ユーザーの追加に成功しました。');";
+      echo "location.href = '../Board/index.php';";
       echo "</script>";
     }else{
       echo "<script type='text/javascript'>";
       echo "alert('ユーザーIDが使用中です。');";
+      echo "location.href = '../Board/index.php';";
       echo "</script>";
+
     }
   }else if(isset($_GET['login'])){
     $name = $_GET['name'];
@@ -39,6 +42,7 @@
     if($task['name'] == ""){
       echo "<script type='text/javascript'>";
       echo "alert('ユーザーIDが存在しないか、パスワードが違います。');";
+      echo "location.href = '../Board/index.php';";
       echo "</script>";
     }else{
       $name = $task['name'];
