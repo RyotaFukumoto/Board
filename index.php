@@ -52,8 +52,21 @@
   <title>ログインページ</title>
     <style type="text/css">
       .main {
+        height: 50px;
+        width: 350px;
         margin-top: 30%;
-        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .main .right{
+        width: 190px;
+        margin-right: 10px;
+        float: left;
+      }
+      .main .left{
+        width: 150px;
+        float: left;
+        text-align: left;
       }
       body {
         background-color: #90EE90;
@@ -82,10 +95,14 @@
 <body>
   <div class ="main">
     <form action="http://localhost/Board/index.php" method="get" onsubmit="return check(this)">
-      <input type="text" size="21" name="name" value="" placeholder="ユーザー名">
-      <input type="submit"style="width:10%;" name="login" value="Login"><br  />
-      <input type="text" size="21" name="passwd" value="" placeholder="パスワード">
-      <input type="submit" style="width:10%;" name="new" value="新規作成">
+      <div class="right" Align="center">
+        <input type="text" size="21" name="name" value="" placeholder="ユーザー名"><br>
+        <input type="text" size="21" name="passwd" value="" placeholder="パスワード">
+      </div>
+      <div class="left">
+        <input type="submit" name="login" style="width:100px;" value="Login"><br>
+        <input type="submit" name="new" style="width:100px;" value="新規作成">
+      </div>
     </form>
   </div>
 </body>
