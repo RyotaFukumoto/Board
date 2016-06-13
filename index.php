@@ -62,7 +62,7 @@
 </head>
 <body>
   <div class ="main">
-    <form action="http://localhost/Board/board.php" method="get" onsubmit="return check(this)">
+    <form action="http://localhost/Board/index.php" method="get" onsubmit="return check(this)">
       <input type="text" size="21" name="name" value="" placeholder="ユーザー名">
       <input type="submit"style="width:10%;" name="login" value="Login"><br  />
       <input type="text" size="21" name="passwd" value="" placeholder="パスワード">
