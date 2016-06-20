@@ -54,29 +54,34 @@
 <!DOCTYPE HTML>
 <html lang="ja">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="../tmp/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="../tmp/js/bootstrap.min.js"></script>
   <title>ログインページ</title>
     <style type="text/css">
-      .main {
-        height: 50px;
-        width: 350px;
-        margin-top: 30%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .main .right{
-        width: 190px;
-        margin-right: 10px;
-        float: left;
-      }
-      .main .left{
-        width: 150px;
-        float: left;
-        text-align: left;
-      }
       body {
-        background-color: #90EE90;
-        color: #7CFC00;
+        background: url(main.jpg) no-repeat center center fixed;
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -o-background-size:cover;
+        background-size:cover; 
       }
+      .aaa{
+        width: 60%;
+        margin: auto;
+        margin-top: 18%;
+      }
+      @media screen and (max-width:650px){
+        .aaa{
+          width: 90%;
+          margin-top: 10%;
+        }
+      }
+
     </style>
     <script type="text/javascript">
       function change(str){
@@ -98,18 +103,25 @@
     </script>
 </head>
 <body>
-  <div class ="main">
-    <!-- <form action="http://localhost/Board/index.php" method="get" onsubmit="return check(this)"> -->
-    <form action="../Board/index.php" method="get" onsubmit="return check(this)">
-      <div class="right" Align="center">
-        <input type="text" size="21" name="name" value="" placeholder="ユーザー名"><br>
-        <input type="text" size="21" name="passwd" value="" placeholder="パスワード">
-      </div>
-      <div class="left">
-        <input type="submit" name="login" style="width:100px;" value="Login"><br>
-        <input type="submit" name="new" style="width:100px;" value="新規作成">
+  <div class="container" >
+
+    <div class="text-center aaa">
+
+    <form action="../Board/index.php" method="get" onsubmit="return check(this)" >
+      <div  class="form-group">
+        <input type="text"  name="name" value="" placeholder="ユーザー名" class="form-control"><br>
+        <input type="text"  name="passwd" value="" placeholder="パスワード" class="form-control"><br>
+        <div class="btn-group btn-group-justified" role="group">
+          <div class="btn-group" role="group">
+            <button type="submit"  name="login" class="btn btn-default" >login</button>
+          </div>
+          <div class="btn-group" role="group">
+            <button type="submit"  name="new" class="btn btn-default" >新規作成</button>
+          </div>
+        </div>
       </div>
     </form>
   </div>
+</div>
 </body>
 </html>
