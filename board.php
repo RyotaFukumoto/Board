@@ -53,11 +53,24 @@ if(isset($_COOKIE['name'])){
 <html>
 <head>
   <meta http-equiv="Refresh" content="30">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="../tmp/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="../tmp/js/bootstrap.min.js"></script>
   <style type="text/css">
-  .right{text-align: right;}
+  body {
+    background: url(main.jpg) no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+  }
   .message{
-    background-color:#E0F2F7;
+    background-color:rgba(255,255,255,0.6);
     margin-bottom: 10px;
+    font-size: 16px;
     padding: 2px;
   }
   </style>
@@ -88,18 +101,21 @@ if(isset($_COOKIE['name'])){
   <title>簡易掲示板</title>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.css" rel="stylesheet">
 </head>
-<body>
-  <div class="right">
-    <a href="../Board/index.php" onclick="delCookie()">ログアウト</a>
+<body onload="document.form1.text.focus();">
+  <div class="container">
+  <div style="text-align:right">
+    <a href="../Board/index.php" class="btn btn-default"　onclick="delCookie()">ログアウト</a>
   </div>
   <?php
-  echo $name."さん";
+  // echo $name."さん";
+  echo '<span class="label label-default">'.$name.'さん</span>'
   ?>
   <?php
-  echo '<form action="" method="GET" onsubmit="return check(this)">';
-  echo  '<input type="text" name="text">';
+  echo '<form name="form1" action="" method="GET" onsubmit="return check(this)" class="form-inline">';
+  echo  '<input type="text" name="text" class="form-control">';
   echo  '<input type="hidden" name="name" value='.$name.' >';
-  echo  '　<input type="submit" name="add" value="add">';
+  // echo  '　<input type="submit" name="add" value="add" >';
+  echo '<button type="submit" class="btn btn-default" name="add">送信</button>';
   echo '</form>';
   ?>
   <hr>
@@ -118,14 +134,16 @@ if(isset($_COOKIE['name'])){
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         while($task = $stmt->fetch(PDO::FETCH_ASSOC)){
-          echo "<div class='container message' style='word-wrap: break-word;'>";
+          echo "<div class='media message' style='word-wrap: break-word;'>";
           echo "<form method='get' action=''>".$task['name']."  ";
           echo $task['time'];
           echo '<input type="hidden" name="name" value='.$name.' >';
-          echo "　<button type='submit' name='delete' style='float: right;' value='".$task['id']."'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+          echo "　<button type='submit' name='delete' style='float: right;' class='btn btn-default btn-xs' value='".$task['id']."'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
           echo "<br>".$task['text'];
-          echo "</form></div>";
+          echo "</form>";
+          echo "</div>";
         }
       ?>
+    </div>
 </body>
 </html>

@@ -68,7 +68,7 @@
         -webkit-background-size:cover;
         -moz-background-size:cover;
         -o-background-size:cover;
-        background-size:cover; 
+        background-size:cover;
       }
       .aaa{
         width: 60%;
@@ -78,7 +78,7 @@
       @media screen and (max-width:650px){
         .aaa{
           width: 90%;
-          margin-top: 10%;
+          margin-top: 40%;
         }
       }
 
