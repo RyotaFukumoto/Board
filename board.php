@@ -52,7 +52,7 @@ if(isset($_COOKIE['name'])){
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta http-equiv="Refresh" content="30">
+  <!-- <meta http-equiv="Refresh" content="30"> -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -68,7 +68,7 @@ if(isset($_COOKIE['name'])){
     background-size:cover;
   }
   .message{
-    background-color:rgba(255,255,255,0.6);
+    background-color:rgba(255,255,255,0.65);
     margin-bottom: 10px;
     font-size: 16px;
     padding: 2px;
@@ -91,12 +91,17 @@ if(isset($_COOKIE['name'])){
         return true;
       }
     }
-
     function delCookie(){
        var date = new Date();
        date.setTime(0);
        document.cookie = "name=;expires="+date.toGMTString();
     }
+    $(document).ready(function(){
+      var timer_id = setInterval(function(){
+        $('#message').load('message.php');
+      },1000);
+
+    });
   </script>
   <title>簡易掲示板</title>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.css" rel="stylesheet">
@@ -119,7 +124,8 @@ if(isset($_COOKIE['name'])){
   echo '</form>';
   ?>
   <hr>
-  <?php
+  <div id="message"></div>
+  <!-- <?php
         try{
           $dsn = 'mysql:dbname=BoardDB;host=localhost;charset=utf8';
           $user = 'root';
@@ -143,7 +149,7 @@ if(isset($_COOKIE['name'])){
           echo "</form>";
           echo "</div>";
         }
-      ?>
+      ?> -->
     </div>
 </body>
 </html>
