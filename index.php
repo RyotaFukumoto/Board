@@ -53,75 +53,81 @@
  ?>
 <!DOCTYPE HTML>
 <html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="../tmp/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="../tmp/js/bootstrap.min.js"></script>
-  <title>ログインページ</title>
-    <style type="text/css">
-      body {
-        background: url(main.jpg) no-repeat center center fixed;
-        -webkit-background-size:cover;
-        -moz-background-size:cover;
-        -o-background-size:cover;
-        background-size:cover;
-      }
-      .aaa{
-        width: 60%;
-        margin: auto;
-        margin-top: 18%;
-      }
-      @media screen and (max-width:650px){
+    <link href="../tmp/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../tmp/js/bootstrap.min.js"></script>
+    <title>ログインページ</title>
+      <style type="text/css">
+        html{
+          height: 100%;
+        }
+        body {
+          background: url(main.jpg) no-repeat center center fixed;
+          -webkit-background-size:cover;
+          -moz-background-size:cover;
+          -o-background-size:cover;
+          background-size:cover;
+          height: 100%;
+        }
         .aaa{
-          width: 90%;
-          margin-top: 40%;
+          width: 60%;
+          position: relative;
+          top: 40%;
+          -webkit-transform: translateY(-50%); /* Safari用 */
+          transform: translateY(-50%);
         }
-      }
-
-    </style>
-    <script type="text/javascript">
-      function change(str){
-        while(str.substr(0,1) == ' ' || str.substr(0,1) == '　'){
-          str = str.substr(1);
+        @media screen and (max-width:650px){
+          .aaa{
+            width: 90%;
+            top:50%;
+          }
         }
-        return str;
-      }
-      function check(frm){
-        var text = change(frm.elements['name'].value);
-        if(text==""){
-          alert("ユーザー名を入力してください。");
-          return false;
-        }else{
-          frm.elements['name'].value = text;
-          return true;
+
+      </style>
+      <script type="text/javascript">
+        function change(str){
+          while(str.substr(0,1) == ' ' || str.substr(0,1) == '　'){
+            str = str.substr(1);
+          }
+          return str;
         }
-      }
-    </script>
-</head>
-<body>
-  <div class="container" >
-
-    <div class="text-center aaa">
-
-    <form action="../Board/index.php" method="get" onsubmit="return check(this)" >
-      <div  class="form-group">
-        <input type="text"  name="name" value="" placeholder="ユーザー名" class="form-control"><br>
-        <input type="text"  name="passwd" value="" placeholder="パスワード" class="form-control"><br>
-        <div class="btn-group btn-group-justified" role="group">
-          <div class="btn-group" role="group">
-            <button type="submit"  name="login" class="btn btn-default" >login</button>
-          </div>
-          <div class="btn-group" role="group">
-            <button type="submit"  name="new" class="btn btn-default" >新規作成</button>
-          </div>
+        function check(frm){
+          var text = change(frm.elements['name'].value);
+          if(text==""){
+            alert("ユーザー名を入力してください。");
+            return false;
+          }else{
+            frm.elements['name'].value = text;
+            return true;
+          }
+        }
+      </script>
+  </head>
+  <body>
+    <div class="container" style="height:100%;">
+      <div class="center-block aaa">
+        <div>
+          <form action="../Board/index.php" method="get" onsubmit="return check(this)" >
+            <div  class="form-group">
+              <input type="text"  name="name" value="" placeholder="ユーザー名" class="form-control"><br>
+              <input type="text"  name="passwd" value="" placeholder="パスワード" class="form-control"><br>
+              <div class="btn-group btn-group-justified" role="group">
+                <div class="btn-group" role="group">
+                  <button type="submit"  name="login" class="btn btn-default" >login</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="submit"  name="new" class="btn btn-default" >新規作成</button>
+                </div>
+              </div><!-- btn-group end-->
+            </div><!-- form-group end -->
+          </form>
         </div>
-      </div>
-    </form>
-  </div>
-</div>
-</body>
+      </div><!-- center-block end -->
+    </div><!-- container end -->
+  </body>
 </html>
